@@ -1,0 +1,76 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  </div>
+  <div>
+      <h2>Add Employee</h2>
+      <table border="1">
+        <tr>
+          <td><label>ID</label></td>
+          <td><input type="text" #id1></td>
+        </tr>
+        <tr>
+          <td><label>Name</label></td>
+          <td><input type="text" #nam></td>
+        </tr>
+        <tr>
+          <td><label>Salary</label></td>
+          <td><input type="text" #sa></td>
+        </tr>
+        <tr>
+          <td><label>Department</label></td>
+          <td><input type="text" #dep></td>
+        </tr>
+        <tr><td> <button (click)="add(id1.value,nam.value,sa.value,dep.value)">Add Employee</button></td></tr>
+      </table>
+  </div>
+  <div>
+  <h2>Employees</h2>
+<table border="1" *ngIf="arrEmp">
+  <tr>
+    <th> ID</th>
+    <th> Name</th>
+    <th> Salary</th>
+    <th> Department</th>
+    <th colspan="2">Action</th>
+  </tr>
+  <tr *ngFor="let employee of arrEmp;let i=index">
+   <td>{{employee.empId}}</td>
+   <td>{{employee.empName}}</td>
+   <td>{{employee.empSal}}</td>
+   <td>{{employee.empDept}}</td>
+   <td><button (click)="update(employee)">UPDATE</button></td>
+   <td><button (click)="delete(arrEmp,i)">DELETE</button></td>
+  </tr>
+</table>
+
+  </div>
+  <h2>Update Employee</h2>
+  <div>
+      <table border="1">
+          <tr>
+            <td><label>ID</label></td>
+            <td><input type="text" #id2 [value]='uid'></td>
+          </tr>
+          <tr>
+            <td><label>Name</label></td>
+            <td><input type="text" #name2 [value]='uname'></td>
+          </tr>
+          <tr>
+            <td><label>Salary</label></td>
+            <td><input type="text" #sal2 [value]='usal'></td>
+          </tr>
+          <tr>
+            <td><label>Department</label></td>
+            <td><input type="text" #dept2 [value]='udept'></td>
+          </tr>
+          <tr><td> <button (click)="updateDetails(id2.value,name2.value,sal2.value,dept2.value)">Update Employee</button></td></tr>
+        </table>
+          
+      
+
+  </div>
+
+<router-outlet></router-outlet>
